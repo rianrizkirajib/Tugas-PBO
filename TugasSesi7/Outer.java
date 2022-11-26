@@ -1,22 +1,24 @@
 package TugasSesi7;
 public class Outer {
     int number=0;
-    private class Inner{
-        public void print(){
-            System.out.println("Mengakses inner class yang ke: "+(++number));
-        }
-    }
 
-    void displayFromMethod(){
-        Inner in =new Inner();
-        in.print();
+    void outerMethod(){
+        class Inner{
+            public void print(){
+                System.out.println("Mengakses inner class yang ke: " + (number++));
+            }
+        }
+
+        Inner inner = new Inner();
+        inner.print(); 
     }
 }
 
-class Main{
+class OuterAccess{
     public static void main(String[] args) {
         Outer out = new Outer();
-        out.displayFromMethod();
-        out.displayFromMethod();
+        out.outerMethod();
+        out.outerMethod();
+        out.outerMethod();
     }
 }
